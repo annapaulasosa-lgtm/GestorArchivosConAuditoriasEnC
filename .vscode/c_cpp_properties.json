@@ -1,18 +1,29 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "GTK-UCRT64",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "E:/msy/ucrt64/include/gtk-4.0",
+                "E:/msy/ucrt64/include/pango-1.0",
+                "E:/msy/ucrt64/include/fribidi",
+                "E:/msy/ucrt64/include/harfbuzz",
+                "E:/msy/ucrt64/include/gdk-pixbuf-2.0",
+                "E:/msy/ucrt64/include/webp",
+                "E:/msy/ucrt64/include/cairo",
+                "E:/msy/ucrt64/include/freetype2",
+                "E:/msy/ucrt64/include/libpng16",
+                "E:/msy/ucrt64/include/pixman-1",
+                "E:/msy/ucrt64/include/graphene-1.0",
+                "E:/msy/ucrt64/lib/graphene-1.0/include",
+                "E:/msy/ucrt64/include/glib-2.0",
+                "E:/msy/ucrt64/lib/glib-2.0/include"
             ],
             "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
+                "LIBDEFLATE_DLL"
             ],
             "compilerPath": "E:/msy/ucrt64/bin/gcc.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],
