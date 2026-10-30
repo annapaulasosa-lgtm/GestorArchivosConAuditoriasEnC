@@ -1,0 +1,13 @@
+2026-10-30  12:39:34 | Usuario: usuario_desconocido | CREAR | test | CORRECTAMENTE
+2026-10-30  12:40:00 | Usuario: usuario_desconocido | RENOMBRAR | test | CORRECTAMENTE
+2026-10-30  12:40:09 | Usuario: usuario_desconocido | BORRADO | test | ERROR
+2026-10-30  12:40:19 | Usuario: usuario_desconocido | BORRADO | testamento | CORRECTAMENTE
+2026-10-30  12:40:29 | Usuario: usuario_desconocido | CREAR | lola | CORRECTAMENTE
+2026-10-30  12:40:51 | Usuario: usuario_desconocido | MOVER | lola | CORRECTAMENTE
+2026-10-30  12:41:10 | Usuario: usuario_desconocido | ABRIR | auditoria | ERROR
+2026-10-30  12:46:21 | Usuario: usuario_desconocido | CREAR | lola | CORRECTAMENTE
+2026-10-30  12:46:53 | Usuario: usuario_desconocido | RENOMBRAR | lola | CORRECTAMENTE
+2026-10-30  12:47:18 | Usuario: usuario_desconocido | MOVER | ema | CORRECTAMENTE
+2026-10-30  12:47:40 | Usuario: usuario_desconocido | MOVER | ema | ERROR
+2026-10-30  12:47:45 | Usuario: usuario_desconocido | CREAR | lola | CORRECTAMENTE
+2026-10-30  12:47:58 | Usuario: usuario_desconocido | BORRADO | lola | CORRECTAMENTE

@@ -4,11 +4,29 @@
 #include <time.h>
 #include "auditoria.h"
 #include "procArchivos.h"
+#include <errno.h>
 
+#ifdef _WIN32
+    #include <direct.h>
+    #include <sys/stat.h>
+    #define MKDIR(ruta) _mkdir(ruta)
+#else
+    #define MKDIR(ruta) mkdir(ruta,0755)
+#endif
+
+//variable comun 
 #define MAX_NOMBRE 255
+
+//proc para mejor ejecución
 void quitarSalto(char texto[]){
     texto[strcspn(texto, "\n")] ='\0';
 }
+void iniciarPapelera(void){
+    if (MKDIR(".papelera") != 0 && errno != EEXIST) {
+        perror("No se pudo crear la papelera");
+    }
+}
+
 
 //funcionan :D
 void abrirArchivo(void) {
@@ -113,7 +131,7 @@ void borrarArchivo(void){
         return;
     }
 
-    if (strftime(id, sizeof(id), "%Y%m%d_%H%M%S",fecha)== 0){
+    if (strftime(id, sizeof(id), "%d%m%Y_%H%M%S",fecha)== 0){
         printf("No se pudo generar el id");
         return;
     }
@@ -156,7 +174,7 @@ void borrarArchivo(void){
     registrarAuditoria(
             "BORRADO",nombre, "CORRECTAMENTE"
         );
-    printf("archivo movido a la papelera por 15 dias");
+    printf("archivo movido a la papelera por 15 dias.\n");
 }
 
 //no renombra
@@ -165,17 +183,15 @@ void renombrarArchivo(void){
     char nuevoNombre[MAX_NOMBRE];
 
     printf("Nombre Actual: ");
-    if (fgets(nuevoNombre, sizeof(nuevoNombre), stdin) == NULL) return;
+    if (fgets(nombre, sizeof(nombre), stdin) == NULL) return;
 
     quitarSalto(nombre);
 
     printf("Nuevo Nombre:");
 
-    if(fgets(nuevoNombre, sizeof(nuevoNombre), stdin) == NULL){
-        return;
-    }
-
-    quitarSalto(nombre);
+    if(fgets(nuevoNombre, sizeof(nuevoNombre), stdin) == NULL) return;
+    
+    quitarSalto(nuevoNombre);
 
     if( nombre[0] == '\0' || nuevoNombre[0]== '\0'){
         printf("los nombres no pueden estar vacios.\n");
@@ -208,7 +224,7 @@ void moverArchivo(void){
 
     if(fgets(destino, sizeof(destino), stdin) == NULL) return;
 
-    quitarSalto(origen);
+    quitarSalto(destino);
     
     if(origen[0] == '\0'|| destino[0]=='\0'){
         printf("origen ni destino puede estar vacio.\n");
@@ -218,6 +234,7 @@ void moverArchivo(void){
     if(rename(origen, destino) != 0){
         perror("El archivo no pudo moverse");
         registrarAuditoria("MOVER", origen, "ERROR");
+        return;
     } 
 
     registrarAuditoria("MOVER", origen, "CORRECTAMENTE");
