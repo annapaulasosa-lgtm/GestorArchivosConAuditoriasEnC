@@ -1,6 +1,45 @@
 #include <gtk/gtk.h>
 #include "ventana.h"
 
+//creamos la barra lateral
+static GtkWidget *creaPanelNav(void){
+
+  GtkWidget *panel = gtk_box_new( GTK_ORIENTATION_VERTICAL,12);
+
+  gtk_widget_add_css_class(panel, "lateral");
+  gtk_widget_set_size_request(panel,210,-1);
+
+  GtkWidget *titulo = gtk_label_new("EXPLORADOR");
+
+  gtk_widget_add_css_class(titulo, "seccion");
+  gtk_box_append(GTK_BOX(panel), titulo);
+
+  //ubis
+
+  GtkWidget *inicio = gtk_button_new_with_label(" Inicio");
+  GtkWidget *documentos = gtk_button_new_with_label(" documentos");
+  GtkWidget *papelera = gtk_button_new_with_label(" papelera");
+
+  Gtk_box_append(GTK_BOX(panel), inicio);
+  Gtk_box_append(GTK_BOX(panel), documentos);
+  Gtk_box_append(GTK_BOX(panel), papelera);
+
+  //div
+  GtkWidget *separador = gtk_separator_new(GTK_ORIENTATION_HORIZONTAL);
+
+  gtk_box_append(GTK_BOX(panel), separador);
+  GtkWidget *acciones = gtk_label_new("ACCIONES");
+  gtk_widget_add_css_class(acciones,"seccion");
+  
+gtk_box_append(GTK_BOX(panel), acciones);
+gtk_box_append(GTK_BOX(panel), gtk_button_with_label("+ Crear Archivo"));
+gtk_box_append(GTK_BOX(panel), gtk_button_with_label("+ Crear carpeta"));
+
+
+return panel;
+}
+
+
 GtkWidget *crearVentana(GtkApplication *app){
 
  //defino forma del "widget"
