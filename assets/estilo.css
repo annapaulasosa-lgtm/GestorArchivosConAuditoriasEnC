@@ -1,0 +1,62 @@
+
+/*PALETA DE COLORES, basado en https://github.com/dracula/gtk*/
+
+*{
+    color: #F8F8F2;
+}
+
+window{
+    background-color: #282A36;
+}
+
+.encabezado {
+    background-color: #21222C;
+    padding: 18px;
+    border-bottom: 1px solid #44475A;
+}
+
+.titulo{
+    color: #BD93F9;
+    font-size:22px;
+    font-weight: bold;
+}
+
+.lateral{
+    background-color: #21222C;
+    padding: 18px;
+    border-right: 1px solid #44475A;
+}
+
+.archivos{
+    background-color: #21222C;
+    padding: 22px;
+}
+
+.derecha{
+    background-color: #21222C;
+    padding: 18px;
+    border-left: 1px solid #44475A;
+}
+
+button{
+    background-color: #44475A;
+    color: #F8F8F2;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+}
+button:hover{
+    background-color: #6272A4;
+}
+
+button:active{
+    background-color: #BD93F9;
+}
+
+entry{
+    background-color: #44475A;
+    color: #F8F8F2;
+    border: 1px solid #6272A4;
+    border-radius: 8px;
+
+}
