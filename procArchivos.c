@@ -5,10 +5,9 @@
 #include "auditoria.h"
 #include "procArchivos.h"
 #include <errno.h>
+#include <sys/stat.h>
 
 #ifdef _WIN32
-    #include <direct.h>
-    #include <sys/stat.h>
     #define MKDIR(ruta) _mkdir(ruta)
 #else
     #define MKDIR(ruta) mkdir(ruta,0755)

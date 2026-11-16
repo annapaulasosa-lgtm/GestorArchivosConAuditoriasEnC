@@ -113,6 +113,7 @@ flowboxchild:hover{
     font-size: 28px;
 }
 
+/* PANEL DEL ROBOT */
 .robot-panel{
     background-color: #282A36;
     border: 1px solid #44475A;
@@ -141,7 +142,6 @@ button.boton-robot label {
 
 .lateral button{
     min-height: 38px;
-    text-align: left;
 }
 .archivos button{
     min-width: 90px;
@@ -156,6 +156,8 @@ button.boton-menu {
 button.boton-menu label {
     color: #F8F8F2;
 }
+
+
 /* BOTONES DEL MENU LATERAL */
 button.boton-menu {
     background-color: #44475A;
@@ -188,4 +190,21 @@ button.boton-vista {
 
 button.boton-vista label {
     color: #F8F8F2;
+}
+
+/* PANEL DE ALMACENAMIENTO */
+
+.progressbar {
+    min-height: 12px;
+    border-radius: 8px;
+    background-color: #44475A;
+}
+
+.progressbar progress {
+    background-color: #BD93F9;
+    border-radius: 8px;
+}
+
+.robot-panel {
+    margin-bottom: 8px;
 }
