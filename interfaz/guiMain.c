@@ -13,7 +13,7 @@ static void cargarEstilos(void){
 
 
 static void activar(GtkApplication *app, gpointer datos){
-
+    (void)datos;
     cargarEstilos();
 
     GtkWidget *ventana = crearVentana(app);

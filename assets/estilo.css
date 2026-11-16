@@ -41,10 +41,13 @@ window{
 button{
     background-color: #44475A;
     color: #F8F8F2;
+
+    border: 1px solid #6272A4;
     border-radius: 8px;
+
     padding: 10px;
-    border: none;
 }
+
 button:hover{
     background-color: #6272A4;
 }
@@ -53,10 +56,136 @@ button:active{
     background-color: #BD93F9;
 }
 
+button:focus{
+    outline-color: #BD93F9;
+}
+
+button label{
+    color: #F8F8F2;
+}
+
 entry{
     background-color: #44475A;
     color: #F8F8F2;
     border: 1px solid #6272A4;
     border-radius: 8px;
 
+}
+
+.seccion{
+    color: #BD93F9;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px;
+
+}
+
+list{
+    background-color: transparent;
+
+}
+
+row{
+    background-color: #282A36;
+    padding: 10px;
+    border-bottom: 1px solid #44475A;
+}
+
+row:hover{
+    background-color:#44475A;
+}
+
+flowbox{
+    background-color: transparent;
+}
+flowboxchild{
+    background-color: #21222C;
+    border: 1px solid #44475A;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+flowboxchild:hover{
+    background-color: #44475A;
+}
+
+.icono-archivo{
+    font-size: 28px;
+}
+
+.robot-panel{
+    background-color: #282A36;
+    border: 1px solid #44475A;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.robot-imagen{
+    font-size: 48px;
+    padding: 12px;
+}
+
+button.boton-robot{
+    background-color: #6272A4;
+    background-image: none;
+    color: #F8F8F2;
+    border: 1px solid #BD93F9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: none;
+}
+
+button.boton-robot label {
+    color: #F8F8F2;
+}
+
+.lateral button{
+    min-height: 38px;
+    text-align: left;
+}
+.archivos button{
+    min-width: 90px;
+}
+
+button.boton-menu {
+    background-color: #44475A;
+    background-image: none;
+    color: #F8F8F2;
+}
+
+button.boton-menu label {
+    color: #F8F8F2;
+}
+/* BOTONES DEL MENU LATERAL */
+button.boton-menu {
+    background-color: #44475A;
+    background-image: none;
+    color: #F8F8F2;
+    border: 1px solid #6272A4;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: none;
+}
+
+button.boton-menu label {
+    color: #F8F8F2;
+}
+
+button.boton-menu:hover {
+    background-color: #6272A4;
+}
+
+/* BOTONES DE VISTAS */
+button.boton-vista {
+    background-color: #44475A;
+    background-image: none;
+    color: #F8F8F2;
+    border: 1px solid #6272A4;
+    border-radius: 8px;
+    padding: 8px 14px;
+    box-shadow: none;
+}
+
+button.boton-vista label {
+    color: #F8F8F2;
 }
