@@ -1,65 +1,62 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <glib.h>
+#include <glib/gstdio.h>
 #include "auditoria.h"
 
-#ifndef _WIN32
+#define ARCHIVO_LOG "auditoria.log"
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <pwd.h>
-#endif
-
-const char *obtenerUsuario(void){
-    const char *usuario = getenv("USERNAME");
-
-    if (usuario == NULL || usuario[0] == '\0'){
-        usuario = getenv("USER");
+/* Reemplaza caracteres que romperían el formato del log */
+static char *limpiarTexto(const char *texto)
+{
+    char *copia = g_strdup(texto != NULL ? texto : "");
+    for (char *p = copia; *p != '\0'; p++) {
+        if (*p == '|')
+            *p = '/';
+        else if (*p == '\n' || *p == '\r')
+            *p = ' ';
     }
-    if( usuario != NULL && usuario[0] == '\0'){
-        return usuario;
-    }
-    
-    #ifndef _WIN32
-        struct passwd *datos = getpwuid(getuid());
-
-        if(datos != NULL && datos ->pw_name != NULL) {
-            return datos->pw_name;
-        };
-    #endif
-
-    return "usuario_desconocido";
+    return copia;
 }
 
-void registrarAuditoria(
-    const char *operacion,      
-    const char *detalle,           
-    const char *resultado)
+void registrarAuditoria(const char *operacion,
+                        const char *detalle,
+                        const char *resultado)
 {
-    FILE *archivo = fopen("auditoria.log", "a");
-
-    if(archivo == NULL) {
-        perror("error al abrir auditoria.log");
+    FILE *archivo = g_fopen(ARCHIVO_LOG, "a");
+    if (archivo == NULL) {
+        perror("Error al abrir auditoria.log");
         return;
     }
 
-    time_t horaActual= time(NULL);
-    struct tm *fecha = localtime(&horaActual);
     char fechaTexto[32] = "fecha_desconocida";
+    time_t ahora = time(NULL);
+    struct tm *fecha = localtime(&ahora);
+    if (fecha != NULL &&
+        strftime(fechaTexto, sizeof fechaTexto, "%Y-%m-%d %H:%M:%S", fecha) == 0)
+        strcpy(fechaTexto, "fecha_desconocida");
 
-    if (fecha != NULL){
-        if ( strftime(fechaTexto,sizeof(fechaTexto), "%Y-%m-%d  %H:%M:%S", fecha) == 0){
-            strcpy(fechaTexto, "fecha_desconocida");
-        }
-    }
+    char *op  = limpiarTexto(operacion);
+    char *det = limpiarTexto(detalle);
+    char *res = limpiarTexto(resultado);
 
     fprintf(archivo, "%s | Usuario: %s | %s | %s | %s\n",
-        fechaTexto, obtenerUsuario(),
-        operacion, detalle, 
-        resultado);
-    
-    if (fclose(archivo) != 0){
+            fechaTexto, g_get_user_name(), op, det, res);
+
+    g_free(op);
+    g_free(det);
+    g_free(res);
+
+    if (fclose(archivo) != 0)
         perror("Error al cerrar auditoria.log");
-    }      
+}
+
+/* Devuelve todo el log (liberar con g_free) o NULL si no existe todavia */
+char *leerAuditoria(void)
+{
+    char *contenido = NULL;
+    if (!g_file_get_contents(ARCHIVO_LOG, &contenido, NULL, NULL))
+        return NULL;
+    return contenido;
 }

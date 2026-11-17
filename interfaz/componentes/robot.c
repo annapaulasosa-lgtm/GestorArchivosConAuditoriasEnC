@@ -67,7 +67,7 @@ GtkWidget *crearPanelRobot(void)
   gtk_box_append(GTK_BOX(panel), titulo);
 
   /// pixel art
-  imagen = gtk_picture_new_for_filename("assets/robot-img.jpeg");
+  imagen = gtk_picture_new_for_filename("assets/happy.png");
   ;
   gtk_widget_add_css_class(imagen, "robot-imagen");
   gtk_box_append(GTK_BOX(panel), imagen);

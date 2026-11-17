@@ -1,1 +1,17 @@
 2026-11-16  21:34:55 | Usuario: usuario_desconocido | RENOMBRAR | auditoria.log | CORRECTAMENTE
+2026-11-16  21:53:35 | Usuario: usuario_desconocido | CREAR | E:\juan | CORRECTAMENTE
+2026-11-16  21:58:43 | Usuario: usuario_desconocido | CREAR | E:\lola | CORRECTAMENTE
+2026-11-16  21:58:50 | Usuario: usuario_desconocido | CREAR CARPETA | E:\kono | CORRECTAMENTE
+2026-11-17 09:35:26 | Usuario: annit | MOVER | E:\gestorArchivosC\.git | CORRECTAMENTE
+2026-11-17 09:36:29 | Usuario: annit | MOVER | E:\gestorArchivosC\.papelera\.git | CORRECTAMENTE
+2026-11-17 09:44:46 | Usuario: annit | RENOMBRAR | E:\juan.txt | CORRECTAMENTE
+2026-11-17  09:47:36 | Usuario: usuario_desconocido | ABRIR | juan | ERROR
+2026-11-17 09:53:49 | Usuario: annit | BORRADO | E:\lola | CORRECTAMENTE
+2026-11-17 09:53:52 | Usuario: annit | BORRADO | E:\lola.txt | CORRECTAMENTE
+2026-11-17 10:01:17 | Usuario: annit | CREAR | E:\gestorArchivosC\lola | CORRECTAMENTE
+2026-11-17 10:01:21 | Usuario: annit | CREAR CARPETA | E:\gestorArchivosC\lol | CORRECTAMENTE
+2026-11-17 10:01:30 | Usuario: annit | CREAR | E:\gestorArchivosC\lol\min.txt | CORRECTAMENTE
+2026-11-17 10:01:45 | Usuario: annit | MOVER | E:\gestorArchivosC\lol\min.txt | CORRECTAMENTE
+2026-11-17 10:02:07 | Usuario: annit | BORRADO | E:\min.txt | CORRECTAMENTE
+2026-11-17 10:02:16 | Usuario: annit | BORRADO | E:\gestorArchivosC\lol | CORRECTAMENTE
+2026-11-17 10:02:18 | Usuario: annit | BORRADO | E:\gestorArchivosC\lola | CORRECTAMENTE

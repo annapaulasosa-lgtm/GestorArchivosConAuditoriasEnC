@@ -18,4 +18,5 @@ int borrarArchivosEnRuta(const char *ruta);
 int renombrarArchivos(const char *rutaActual, const char *nuevaRuta);
 int moverArchivosEnRuta(const char *origen, const char *destino);
 char *abrirArchivoEnRuta(const char *ruta);
+int crearCarpetaEnRuta(const char *ruta);
 #endif

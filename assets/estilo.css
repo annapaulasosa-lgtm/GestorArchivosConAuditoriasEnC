@@ -121,12 +121,13 @@ flowboxchild:hover{
     padding: 12px;
 }
 
-.robot-imagen{
-    font-size: 48px;
-    padding: 12px;
+.robot-imagen {
+    min-width: 150px;
+    min-height: 140px;
+    padding: 8px;
 }
 
-button.boton-robot{
+button.boton-robot {
     background-color: #6272A4;
     background-image: none;
     color: #F8F8F2;
@@ -134,6 +135,10 @@ button.boton-robot{
     border-radius: 8px;
     padding: 10px;
     box-shadow: none;
+}
+
+button.boton-robot:hover {
+    background-color: #BD93F9;
 }
 
 button.boton-robot label {
@@ -207,4 +212,52 @@ button.boton-vista label {
 
 .robot-panel {
     margin-bottom: 8px;
+}
+
+/* CORRECCIONES GENERALES GTK 4 */
+
+/* Evitar fondos blancos predeterminados */
+button {
+    background-image: none;
+    box-shadow: none;
+    color: #F8F8F2;
+}
+
+/* Botones de confirmación y diálogos */
+window.dialog {
+    background-color: #282A36;
+    color: #F8F8F2;
+}
+
+window.dialog button {
+    background-color: #44475A;
+    background-image: none;
+    color: #F8F8F2;
+    border: 1px solid #6272A4;
+    border-radius: 8px;
+    padding: 8px 14px;
+    box-shadow: none;
+}
+
+window.dialog button:hover {
+    background-color: #6272A4;
+}
+
+window.dialog button:focus {
+    outline-color: #BD93F9;
+}
+
+/* Botón volver */
+button.boton-volver {
+    background-color: #44475A;
+    background-image: none;
+    color: #F8F8F2;
+    border: 1px solid #6272A4;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: none;
+}
+
+button.boton-volver:hover {
+    background-color: #6272A4;
 }

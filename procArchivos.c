@@ -32,7 +32,7 @@ void iniciarPapelera(void)
     }
 }
 
-//reutilizacion de las funciones de consola para usar con interfaz
+// reutilizacion de las funciones de consola para usar con interfaz
 int crearArchivosEnRuta(const char *ruta)
 {
     if (ruta == NULL || ruta[0] == '\0')
@@ -163,13 +163,16 @@ int renombrarArchivos(const char *rutaActual, const char *nuevaRuta)
     return 1;
 }
 
-int moverArchivosEnRuta(const char *origen, const char *destino){
+int moverArchivosEnRuta(const char *origen, const char *destino)
+{
     if (origen == NULL || destino == NULL ||
-        origen[0] == '\0' || destino[0] == '\0') {
+        origen[0] == '\0' || destino[0] == '\0')
+    {
         return -1;
     }
 
-    if (rename(origen, destino) != 0) {
+    if (rename(origen, destino) != 0)
+    {
         perror("No se pudo mover el archivo");
         registrarAuditoria("MOVER", origen, "ERROR");
         return -1;
@@ -179,41 +182,48 @@ int moverArchivosEnRuta(const char *origen, const char *destino){
     return 1;
 }
 
-char *abrirArchivoEnRuta(const char *ruta){
-    if (ruta == NULL || ruta[0] == '\0') {
+char *abrirArchivoEnRuta(const char *ruta)
+{
+    if (ruta == NULL || ruta[0] == '\0')
+    {
         return NULL;
     }
 
     FILE *archivo = fopen(ruta, "r");
 
-    if (archivo == NULL) {
+    if (archivo == NULL)
+    {
         perror("No se pudo abrir el archivo");
         registrarAuditoria("ABRIR", ruta, "ERROR");
         return NULL;
     }
 
-    if (fseek(archivo, 0, SEEK_END) != 0) {
+    if (fseek(archivo, 0, SEEK_END) != 0)
+    {
         fclose(archivo);
         return NULL;
     }
 
     long tamanio = ftell(archivo);
 
-    if (tamanio < 0 || fseek(archivo, 0, SEEK_SET) != 0) {
+    if (tamanio < 0 || fseek(archivo, 0, SEEK_SET) != 0)
+    {
         fclose(archivo);
         return NULL;
     }
 
     char *contenido = malloc((size_t)tamanio + 1);
 
-    if (contenido == NULL) {
+    if (contenido == NULL)
+    {
         fclose(archivo);
         return NULL;
     }
 
     size_t leidos = fread(contenido, 1, (size_t)tamanio, archivo);
 
-    if (ferror(archivo)) {
+    if (ferror(archivo))
+    {
         free(contenido);
         fclose(archivo);
         return NULL;
@@ -226,8 +236,32 @@ char *abrirArchivoEnRuta(const char *ruta){
     return contenido;
 }
 
+int crearCarpetaEnRuta(const char *ruta)
+{
+    if (ruta == NULL || ruta[0] == '\0')
+    {
+        return -1;
+    }
 
-//fuinciones de consolas
+    int resultado = MKDIR(ruta);
+
+    if (resultado != 0)
+    {
+        if (errno == EEXIST)
+        {
+            return 0;
+        }
+
+        perror("No se pudo crear la carpeta");
+        registrarAuditoria("CREAR CARPETA", ruta, "ERROR");
+        return -1;
+    }
+
+    registrarAuditoria("CREAR CARPETA", ruta, "CORRECTAMENTE");
+
+    return 1;
+}
+// fuinciones de consolas
 void abrirArchivo(void)
 {
     char nombre[MAX_NOMBRE];
